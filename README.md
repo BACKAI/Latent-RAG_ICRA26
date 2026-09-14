@@ -12,24 +12,24 @@ This directory is an independent, runnable implementation of:
 Latent-RAG is a privacy-preserving person re-identification framework that protects a person image while retaining identity-discriminative information for downstream re-ID. The method retrieves identity-related latent representations from a fixed Market-1501 vector store, fuses the retrieved `W+` codes using inverse self-attention, and performs a short identity-aligned latent optimization before synthesizing the protected image with a frozen StyleGAN3 generator. The optimization separates coarse and fine latent layers: coarse layers are updated to increase visual divergence from the input image, while fine layers are updated to preserve re-identification identity similarity. No generator, re-ID, or E4E weights are trained by Latent-RAG; the only per-image optimization is the ten-step latent update described in the paper.
 
 
-<!--
+
 <p align="center">
   <img src="assets/overview.jpg" width="75%">
 </p>
 
-<p align="center">
+<!-- <p align="center">
   <b>Overview of the proposed Latent-RAG framework.</b>
-</p>
+</p> -->
 
 
 <p align="center">
   <img src="assets/results.jpg" width="55%">
 </p>
 
-<p align="center">
+<!-- <p align="center">
   <b>Qualitative results of Latent-RAG.</b>
-</p>
--->
+</p> -->
+
 
 
 ## What is implemented
@@ -168,6 +168,7 @@ The only preparation step is construction of the fixed Market-1501 identity/late
 The protected query is never encoded by E4E at inference; only the retrieved gallery `W+` codes are used. This preserves the paper's input/latent decoupling.
 
 
+<!--
 ## Evaluation protocol
 
 The paper reports:
@@ -198,6 +199,7 @@ The paper reports Market-1501 Rank-1/mAP of `94.4/87.1` for AGW, `93.9/85.7` for
 - `Lid` is one minus cosine similarity, matching Eq. (7).
 - Re-ID and StyleGAN3 parameters are frozen. Gradients are taken only with respect to the current coarse or fine latent slice.
 - The implementation uses the official NVlabs StyleGAN3 loader under `third_party/stylegan3`. That directory is an upstream dependency and retains its upstream license.
+-->
 
 
 ## Citation
